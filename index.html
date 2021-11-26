@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            /* list-style-type: none; */
+            font-family: 'Poppins',sans-serif;
+        }
+        .show{
+            display: none;
+        }
+        form{
+            position: absolute;
+            width: 500px;
+            top: 0%;
+            left: 50%;
+            transform: translate(-50%,10%);
+            border-radius: 10px;
+            box-shadow: 3px 2px 1px rgba(0, 0, 0, 0.462);
+            background-color: #fff;
+            padding: 15px 10px;
+            z-index: 20;
+            padding-top: 30px;
+        }
+        form div{
+            margin: 10px 0;
+        }
+        form input{
+            width: 100%;
+            padding: 10px 15px;
+        }
+        .doubles{
+            display: flex;
+            justify-content: space-between;
+         
+        }
+        textarea{
+            padding: 2px 0 2px 10px;
+        }
+        button{
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            background-color: #020723;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .container{
+            box-shadow: 3px 2px 1px rgba(0, 0, 0, 0.462);
+
+            width: 800px;
+            margin: 5px auto;
+        }
+        h1{
+            font-size: 40px;
+            line-height: 40px;
+            font-weight: bolder;
+            text-transform: uppercase;
+        }
+        .img-div{
+            height: 300px;
+            width: 260px;
+            position: relative;
+            background-color: rgb(0, 0, 0);
+        }
+        .img-div img{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: inline-block;
+         
+        }
+        .img-div::after{
+            content: ' ';
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.245);
+            top: 0;
+            left: 0;
+            height: 100%;
+            z-index: 1;
+            position: absolute;
+        }
+        .img-div h3{
+            position: absolute;
+            text-transform: uppercase;
+            top: 0;
+            right: 0;
+            transform: translateX(180px) translateY(200px) rotate(-90deg) ;
+            transform-origin: left;
+            letter-spacing: 5px;
+            color: transparent;
+            word-spacing: 10px;
+            font-size: 30px;
+            z-index: 10;
+            cursor: pointer;
+        }
+        main{
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background-color: #020723;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='129' height='129' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23010622' fill-opacity='0.75'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.75'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E");
+            color: #fff;
+            padding: 10px;
+        }
+        main section {
+            margin: 0 50px;
+        }
+        div.details{
+            font-size: 30px;
+           
+            text-align: right;
+        }
+       
+        .name-init{
+            font-weight: bold;
+        }
+        header{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            height: 280px;
+        }
+        footer{
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        ul p{
+            font-weight: bold;
+            /* font-size: 18px; */
+            margin-left: 10px;
+        }
+        ul li{
+            margin: 15px 0;
+            text-transform: capitalize;
+        }
+        .setof{
+            color: #b17efd;
+        }
+        @supports (-webkit-text-stroke: 1px black) {
+  .img-div h3 {
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
+  }
+}
+.close{
+    padding: 10px;
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.293);
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+}
+    </style>
+</head>
+<body> 
+    <div class="container">
+        <main>
+            <header>
+                <h1>
+                   <div>
+                      CSE
+                      <span>
+                          <img src="" alt="">
+                      </span>
+                      <span>
+                        <img src="" alt="">
+                    </span>
+                   </div>
+                   Class
+                   <div class="setof">
+                       XX
+                   </div>
+                </h1>
+                <div class="details">
+                    
+                    <p class="name-init">Mary O.</p>
+                    <p class="surname">
+                        Oyelakin
+                    </p>
+                </div>
+            </header>
+            <section>
+                <div class="img-div">
+                    <img src="https://images.unsplash.com/photo-1637883917408-16006ca77cc4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80" alt="">
+                    
+                    <h3>
+                        fyb OF <br /> THE DAY
+                    </h3>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <ul>
+                <li>
+                   Nickname :
+                   <p class="nickname">
+                       Mide
+                   </p>
+                </li>
+                <li>
+                    Date of Birth :
+                    <p class="dob">
+                        May 24th
+                    </p>
+                 </li>
+                 <li>
+                    State of Origin :
+                    <p class="state">
+                       Oyo
+                    </p>
+                 </li>
+                 <li>
+                    Class Crush :
+                    <p class="crush">
+                       Bush
+                    </p>
+                 </li>
+                 <li>
+                    Relationship Status :
+                    <p class="status">
+                       Dating
+                    </p>
+                 </li>
+                 <li>
+                    Hobbies :
+                    <p class="hobby">
+                       Cooking, Plaiting hair, Being a sweet girl
+                    </p>
+                 </li>
+            </ul>
+            <ul>
+                <li>
+                   Favourite Course(s):
+                   <p class="course">
+                       All Courses
+                   </p>
+                </li>
+                <li>
+                    Favorite Lecturer :
+                    <p class="lecturer">
+                        All Lecturers
+                    </p>
+                 </li>
+                 <li>
+                    Most Challenging Course(s) :
+                    <p class="Challenging">
+                       wo All noni
+                    </p>
+                 </li>
+                 <li>
+                    Brief Bio :
+                    <p class="bio">
+                       Hi Guys, I am Mide. Fine Girl of CSE 👩‍🦰😘
+                    </p>
+                 </li>
+                 <li class="social-media">
+                    Social Meida Handles :
+                    <p class="social">
+                       Not on Social,But find me on Instagram
+                    </p>
+                 </li>
+            </ul>
+        </footer>
+        <form action="" class="show">
+             <div>
+                <label for="nickname">
+                    Nickname
+               </label>
+               <input type="text" name="nickname" id="nickname">
+             </div>
+
+             <div>
+                <label for="dob">
+                    Date of Birth
+               </label>
+               <input type="text" name="dob" id="dob">
+             </div>
+
+             <div>
+                <label for="state">
+                    State
+               </label>
+               <input type="text" name="state" id="state">
+             </div>
+             <div>
+                <label for="crush">
+                    Crush
+               </label>
+               <input type="text" name="crush" id="crush">
+             </div>
+             <div class="doubles">
+               <select name="relationship" id="relationship">
+                   <option value="single">Single</option>
+                   <option value="married">Married</option>
+                   <option value="engaged">Engaged</option>
+                   <option value="none">Prefer not to say</option>
+               </select>
+               <textarea name="hobbies" id="hobbies" cols="15" rows="1" placeholder="hobbies"></textarea>
+             </div>
+             <div>
+                <label for="course">
+                    Favourite Course
+               </label>
+               <input type="text" name="course" id="course">
+             </div>
+             <div>
+                <label for="lecturer">
+                    Favourite Lecturer
+               </label>
+               <input type="text" name="lecturer" id="lecturer">
+             </div>
+             <div>
+               <textarea name="" id="bio" cols="30" rows="5" placeholder="brief bio"></textarea>
+             </div>
+             <div>
+                <label for="img">Select image:</label>
+                <input type="file" id="img" name="img" accept="image/*">
+             </div>
+             <button type="submit"> Submit </button>
+             <span class="close">
+                 X
+             </span>
+        </form>
+    </div>
+    <script>
+        let form = document.querySelector('form');
+        let close = document.querySelector('.close')
+        let openDialogue = document.querySelector('.img-div h3')
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault()
+            let nickname = document.querySelector('input[name="nickname"]').value;
+            let nickSpace = document.querySelector('p.nickname')
+            let dob = document.querySelector('input[name="dob"]').value;
+            let dobSpace = document.querySelector('p.dob')
+            let state = document.querySelector('input[name="state"]').value;
+            let stateSpace = document.querySelector('p.state')
+            let crush = document.querySelector('input[name="crush"]').value;
+            let crushSpace = document.querySelector('p.crush')
+            let status = document.querySelector('#relationship').value;
+            let statusSpace = document.querySelector('p.status')
+            let hobby = document.querySelector('#hobbies').value;
+            let hobbySpace = document.querySelector('p.hobby')
+            let course = document.querySelector('input[name="course"]').value;
+            let courseSpace = document.querySelector('p.course')
+            let lecturer = document.querySelector('input[name="lecturer"]').value;
+            let lecturerSpace = document.querySelector('p.lecturer')
+            let bio = document.querySelector('#bio').value;
+            let bioSpace = document.querySelector('p.bio')
+            let img = document.querySelector('#img').value;
+            let imgSpace = document.querySelector('.img-div img');
+
+
+            nickSpace.innerHTML = nickname
+            dobSpace.innerHTML = dob
+            stateSpace.innerHTML = state
+            crushSpace.innerHTML = crush
+            statusSpace.innerHTML = status
+            hobbySpace.innerHTML = hobby
+            courseSpace.innerHTML = course
+            lecturerSpace.innerHTML = lecturer
+            bioSpace.innerHTML = bio
+            imgSpace.setAttribute('src',img)
+            console.dir(img)
+        })
+        close.addEventListener('click',()=>{
+            form.classList.add('show')
+        })
+        openDialogue.addEventListener('click',()=>{
+            form.classList.remove('show')
+        })
+    </script>
+</body>
+</html>
